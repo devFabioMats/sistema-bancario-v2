@@ -12,9 +12,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Banco {
-    public static String driver="com.microsoft.sqlserver.jdbc.SQLServerDriver";
-    public static String url="jdbc:sqlserver://localhost:1433;databaseName=SistemaBancario;encrypt=true;trustServerCertificate=true;";
-    public static String user="sa";
+    public static String driver="com.mysql.cj.jdbc.Driver";
+    public static String url="jdbc:mysql://localhost:3306/banco";
+    public static String user="root";
     public static String password="1234";
             
     public static void main(String[] args) {
