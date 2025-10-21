@@ -6,8 +6,8 @@ import java.sql.SQLException;
 public class ConnectionFactory {
     public Connection getConnection() {
         try {
-            return DriverManager.getConnection("jdbc:mysql://localhost:3306/banco",
-                    "root","1234");
+            return DriverManager.getConnection("jdbc:mysql://localhost/projetojava",
+                    "LCF","129129");
         }
         catch(SQLException excecao) {
             throw new RuntimeException(excecao);
