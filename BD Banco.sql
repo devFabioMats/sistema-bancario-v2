@@ -1,3 +1,27 @@
+-- =============================================
+-- CRIAR BANCO E TABELAS - SQL SERVER
+-- Execute este script completo no SSMS
+-- =============================================
+
+-- 1. CRIAR O BANCO DE DADOS
+IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = 'banco')
+BEGIN
+    CREATE DATABASE banco;
+    PRINT 'Database "banco" criado com sucesso!';
+END
+ELSE
+BEGIN
+    PRINT 'Database "banco" já existe.';
+END
+GO
+
+-- 2. USAR O BANCO CRIADO
+USE banco;
+GO
+
+-- 3. CRIAR TABELAS
+PRINT 'Criando tabelas...';
+
 CREATE TABLE Usuario (
 	nome VARCHAR(50),
     cpf INT NOT NULL,
