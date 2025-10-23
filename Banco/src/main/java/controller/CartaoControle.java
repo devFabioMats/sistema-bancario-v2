@@ -12,10 +12,10 @@ import java.sql.Statement;
 import java.util.Random;
 
 public class CartaoControle {
-    public static String driver="com.mysql.cj.jdbc.Driver";
-    public static String url="jdbc:mysql://localhost:3306/banco";
-    public static String user="LCF";
-    public static String password="129129";
+    public static String driver="com.microsoft.sqlserver.jdbc.SQLServerDriver";
+    public static String url="jdbc:sqlserver://localhost:1433;databaseName=banco;trustServerCertificate=true";
+    public static String user="sa";
+    public static String password="1234";
     Conta conta = new Conta();
          
     public void gerarCartão(CartaoVirtual cartao, int login, String senha) {
