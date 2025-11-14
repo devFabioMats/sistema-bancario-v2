@@ -1,14 +1,9 @@
 package controller;
-import model.Conta;
-import model.Usuario;
 import model.Extrato;
-import Factory.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +16,6 @@ public class ExtratoControle {
     public List<Extrato> pegarExtrato(int login, String senha){
         Connection conexao = null;
         ResultSet ps = null;
-        Statement st = null;
         PreparedStatement rs=null;
         List<Extrato> extratos = new ArrayList<>();
         try{
@@ -31,18 +25,19 @@ public class ExtratoControle {
         }
         try{
             conexao = DriverManager.getConnection(url,user,password); 
-            String sql = "SELECT * FROM Extrato WHERE cpfUsuario ='" + login + "'";
-            st = conexao.createStatement();
-            ps = st.executeQuery(sql);
+            String sql = "SELECT valor, tipo, numConta, cpfUsuario FROM Extrato WHERE cpfUsuario = ?";
+            rs = conexao.prepareStatement(sql);
+            rs.setInt(1, login);
+            ps = rs.executeQuery();
             while(ps.next()){
                 Extrato extrato = new Extrato();
-                extrato.setValor(ps.getFloat(1));
-                extrato.setTipo(ps.getString(2));
-                extrato.setNumero(ps.getInt(3));
-                extrato.setCpf(ps.getInt(4));
+                extrato.setValor(ps.getFloat("valor"));
+                extrato.setTipo(ps.getString("tipo"));
+                extrato.setNumero(ps.getInt("numConta"));
+                extrato.setCpf(ps.getInt("cpfUsuario"));
                 extratos.add(extrato);
             }
-            st.close();
+            rs.close();
             ps.close();
             conexao.close();
         }catch(Exception  ex){

@@ -1,11 +1,8 @@
 package controller;
 import model.CartaoVirtual;
-import model.Usuario;
 import model.Conta;
-import Factory.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -24,6 +21,11 @@ public class CartaoControle {
         ResultSet ls = null;
         Statement st = null;
         Random gerador = new Random();
+        
+        // Gerar os valores do cartão
+        int numeroCartao = gerador.nextInt(89999) + 1000;
+        int cvv = gerador.nextInt(899) + 100;
+        
         try{
             Class.forName(driver);
         }catch(Exception ex){
@@ -46,17 +48,22 @@ public class CartaoControle {
             conexao = DriverManager.getConnection(url,user,password);
             String sql = "INSERT INTO Cartao(numCartao,cvv,limite,numConta,cpfUsuario) VALUES(?,?,?,?,?);";
             ps = conexao.prepareStatement(sql);
-            ps.setInt(1,gerador.nextInt(89999)+1000);
-            ps.setInt(2, gerador.nextInt(899)+100);
+            ps.setInt(1, numeroCartao);
+            ps.setInt(2, cvv);
             ps.setFloat(3, cartao.getLimite());
             ps.setInt(4, conta.getNumero());
             ps.setInt(5, conta.getCpfUsuario());
             ps.execute();
             ps.close();
             conexao.close();
+            
+            // Definir os valores gerados no objeto cartão para que possam ser acessados na view
+            cartao.setCartao(numeroCartao);
+            cartao.setCvv(cvv);
+            
         }catch(Exception  ex){
             System.out.println(ex);
         }
-        System.out.println("Conta criada com sucesso");
+        System.out.println("Cartão criado com sucesso");
     }
 }
