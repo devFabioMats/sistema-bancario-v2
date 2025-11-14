@@ -22,7 +22,6 @@ public class CartaoControle {
         Statement st = null;
         Random gerador = new Random();
         
-        // Gerar os valores do cartão
         int numeroCartao = gerador.nextInt(89999) + 1000;
         int cvv = gerador.nextInt(899) + 100;
         
@@ -57,7 +56,6 @@ public class CartaoControle {
             ps.close();
             conexao.close();
             
-            // Definir os valores gerados no objeto cartão para que possam ser acessados na view
             cartao.setCartao(numeroCartao);
             cartao.setCvv(cvv);
             
