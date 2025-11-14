@@ -1,5 +1,5 @@
 ## 💸 Sistema Bancário 💸
-Projeto da disciplina de Programação Orientada a Objetos 2 (EC46A/C61)
+Projeto da disciplina de Programação Orientada a Objetos 2 (ES44B/ES41)
 
 Curso de Engenharia de Computação/Software - UTFPR/Cornélio Procópio
 
@@ -34,12 +34,12 @@ Curso de Engenharia de Computação/Software - UTFPR/Cornélio Procópio
 
 ⚙️ **Ferramentas e Tecnologias:**  
 - Prototipação: Java
-- SGBD: Integração BD via MySQL Community Edition
+- SGBD: Integração BD via SQL Server
 - IDE: Apache Netbeans
 
 <br>
 
 👥 **Colaboradores:**
-- [Enio Felipe Botelho Miguel](https://github.com/EnioFelipe) (EnioFelipe)
-- [Fabio Eizo Rodriguez Matsumoto](https://github.com/devFabioMats) (devFabioMats)
-- [Leonardo Chidiquimo Faleco](https://github.com/LeonardoCFaleco) (LeonardoCFaleco)
+- Eduardo Caversan da Silva Rocha
+- Fabio Eizo Rodriguez Matsumoto
+- Kalebe Silva do Nascimento
